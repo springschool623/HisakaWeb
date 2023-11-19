@@ -1,0 +1,46 @@
+﻿@model HisakaWeb.Models.Account
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Register</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Login Start -->
+<div class="login" style="padding: 50px 0">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <form action="/Home/Register" method="post" class="login-form" style="padding: 65px; padding-top: 40px;">
+                    @Html.AntiForgeryToken()
+                    <h1 style="text-align:center;">Đăng ký</h1>
+                    <div class="column">
+                        <div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.accountName, "Tên đăng nhập")
+                                @Html.EditorFor(model => model.accountName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.accountName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.accountPassword, "Mật khẩu")
+                                @Html.EditorFor(model => model.accountPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.accountPassword, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><!-- Login End -->

@@ -1,0 +1,249 @@
+﻿@model HisakaWeb.Models.Product
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<!-- Main Slider Start -->
+<div class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <nav class="navbar bg-light">
+                    <ul class="navbar-nav" style="height: 100%">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index")"><i class="fa fa-home"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("About")"><i class="fa fa-question"></i>About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Contact")"><i class="fa fa-phone"></i>Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","ProductList")"><i class="fa fa-book"></i>Product List</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-6">
+                <div class="header-slider normal-slider">
+                    <div class="header-slider-item">
+                        <img src="~/Content/img/home_slide/slider_5.jpg" alt="Slider Image" height="400" style="margin: auto" />
+                        <div class="header-slider-caption">
+                            <p>Dầu gội Rejoice của Unilever</p>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="header-slider-item">
+                        <img src="~/Content/img/home_slide/slider_2.jpg" alt="Slider Image" height="400" style="margin: auto" />
+                        <div class="header-slider-caption">
+                            <p>Bộ Mascara của Maybelline</p>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="header-slider-item">
+                        <img src="~/Content/img/home_slide/slider_3.jpg" alt="Slider Image" height="400" style="margin: auto" />
+                        <div class="header-slider-caption">
+                            <p>Bộ sản phẩm Dior</p>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="header-slider-item">
+                        <img src="~/Content/img/home_slide/slider_4.jpg" alt="Slider Image" height="400" style="margin: auto" />
+                        <div class="header-slider-caption">
+                            <p>Bộ sản phẩm Lancôme</p>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="header-img">
+                    <div class="img-item">
+                        <img src="~/Content/img/home_slide/slider_1.jpg" alt="Slider Image"  />
+                        <a class="img-text" href="">
+                            <p>Bộ sản phẩm son nhiều màu sắc</p>
+                        </a>
+                    </div>
+                    <div class="img-item">
+                        <img src="~/Content/img/home_slide/slider_6.jpeg" />
+                        <a class="img-text" href="">
+                            <p>Bộ sưu tập nước hoa của các thương hiệu nổi tiếng trên thế giới</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Slider End -->
+<!-- Brand Start -->
+<div class="brand">
+    <div class="container-fluid">
+        <div class="brand-slider">
+            @foreach (var brand in ViewBag.Brands)
+            {
+                <div class="brand-item">
+                    <img src="@brand.brandLogo" alt="Brand Logo" height="75px"/>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Brand End -->
+<!-- Feature Start-->
+<div class="feature">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fab fa-cc-mastercard"></i>
+                    <h2>Secure Payment</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur elit
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-truck"></i>
+                    <h2>Worldwide Delivery</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur elit
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-sync-alt"></i>
+                    <h2>90 Days Return</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur elit
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-comments"></i>
+                    <h2>24/7 Support</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur elit
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feature End-->
+<!-- Featured Product Start -->
+<div class="featured-product product">
+    <div class="container-fluid">
+        <div class="section-header" style="background: #326e51 ">
+            <h1 style="color: #fff">Featured Product</h1>
+        </div>
+        <div class="row align-items-center product-slider product-slider-4">
+            @foreach (var product in ViewBag.Products)
+            {
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title">
+                            <a href="#">@product.productName</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="@Url.Action("Index","ProductDetail", new { id=product.productID })">
+                                <img src="@product.productImage" alt="Product Image" height="500" />
+                            </a>
+                        </div>
+                        @{
+                            double price = (double)product.productPrice;
+                        }
+                        <div class="product-price">
+                            <h3>@price.ToString("#,##0 VND")</h3>
+                            <a class="btn" href="@Url.Action("AddToCart", "Cart", new { productId = product.productID })"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Featured Product End -->
+<!-- Recent Product Start -->
+<div class="recent-product product">
+    <div class="container-fluid">
+        <div class="section-header" style="background: #326e51 ">
+            <h1 style="color: #fff">Recent Product</h1>
+        </div>
+        <div class="row align-items-center product-slider product-slider-4">
+            @foreach (var product in ViewBag.Products)
+            {
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-title" style="overflow:hidden">
+                            <a href="#">@product.productName</a>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="product-image">
+                            <a href="@Url.Action("Index","ProductDetail", new { id=product.productID })">
+                                <img src="@product.productImage" alt="Product Image" height="500"/>
+                            </a>
+                        </div>
+                        @{ 
+                            double price = (double)product.productPrice;
+                        }
+                        <div class="product-price">
+                            <h3>@price.ToString("#,##0 VND")</h3>
+                            <a class="btn" href="@Url.Action("AddToCart", "Cart", new { productId = product.productID })"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Recent Product End -->
+<!-- Review Start -->
+<div class="review">
+    <div class="container-fluid">
+        <div class="row align-items-center review-slider normal-slider">
+            @foreach (var customers in ViewBag.Customers)
+            {
+                <div class="col-md-8">
+                    <div class="review-slider-item">
+                        <div class="review-img">
+                            <img src="~/Content/img/reviewer_photo/review_1.jpg" alt="Image" />
+                        </div>
+                        <div class="review-text">
+                            <h2>@customers.customerFirstName @customers.customerLastName</h2>
+                            <h3>Customer</h3>
+                            <div class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p>
+                                Cảm ơn Hisaka đã mang đến cho tôi một sản phẩm tuyệt vời như vậy. Tôi sẽ tiếp tục ủng hộ Hisaka trong thời gian tới.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Review End -->        

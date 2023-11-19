@@ -1,0 +1,112 @@
+﻿@model IEnumerable<HisakaWeb.Models.Account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+
+    .crud-btn {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+    }
+
+        .crud-btn i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+    td, th {
+        text-align: center;
+    }
+</style>
+
+@{
+    int count = 0;
+}
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Accounts</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header border-transparent">
+            <h3 class="card-title">Danh sách thông tin khách hàng</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table m-0">
+                    <thead>
+                        <tr>
+                            <th>Số thứ tự</th>
+                            <th>Tên tài khoản</th>
+                            <th>Mật khẩu</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@Html.DisplayFor(modelItem => item.accountName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.accountPassword)</td>
+                                <td>@Html.DisplayFor(modelItem => item.account_status)</td>
+
+                                <td>
+                                    <a href="@Url.Action("Edit","Customers", new { id=item.accountID })" class="crud-btn btn-info">
+                                        <i class="fa-solid fa-pen-to-square">
+                                        </i>
+                                    </a>
+                                    <a href="@Url.Action("Delete","Customers", new { id=item.accountID })" class="crud-btn btn-danger">
+                                        <i class="fa-solid fa-x">
+                                        </i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+        </div>
+        <!-- /.card-footer -->
+    </div>
+</section>
+
+

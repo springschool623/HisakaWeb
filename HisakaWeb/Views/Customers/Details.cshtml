@@ -1,0 +1,51 @@
+﻿@model HisakaWeb.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.customerFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customerFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customerLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customerLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customerPhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customerPhoneNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.customerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

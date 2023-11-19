@@ -1,0 +1,94 @@
+﻿@model List<HisakaWeb.Models.Cart>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Cart</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Cart Start -->
+<div class="cart-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-page-inner">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="align-middle">
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.productName</td>
+                                    <td>@item.productQuantity</td>
+                                    @{ 
+                                        int quantity = item.productQuantity;
+                                        double price = item.productPrice;
+                                        double total = quantity * price;
+                                    }
+                                    <td><img src="@item.productImage"/ width="50"></td>
+                                    <td>@total.ToString("#,##0 VND")</td>
+                                    <td><a href="@Url.Action("RemoveFromCart", "Cart", new { productId = item.productId })"><i class="fa fa-trash"></i></a></td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>                                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="cart-page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="coupon">
+                                <input type="text" placeholder="Coupon Code">
+                                <button>Apply Code</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="cart-summary">
+                                <div class="cart-content">
+                                    <h1>Cart Summary</h1>
+                                    @{
+                                        double grandtotal = 0;
+                                        double subtotal = 0;
+                                        double shippingcost = 15000;
+                                        if (ViewBag.Total != null)
+                                        {
+                                            subtotal = ViewBag.Total;
+                                        }
+                                        grandtotal = subtotal + shippingcost;
+                                    }
+                                    <p>Sub Total<span>@subtotal.ToString("#,##0 VND")</span></p>
+                                    <p>Shipping Cost<span>@shippingcost.ToString("#,##0 VND")</span></p>
+
+                                    <h2>Grand Total<span>@grandtotal.ToString("#,##0 VND")</span></h2>
+                                </div>
+                                <div class="cart-btn">
+                                    <a href="@Url.Action("TotalCart", "Cart")" style="display: block; width: 100%; margin-top: 15px; padding: 15px; text-align: center; background: #326e51; color: #fff;">Update Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart End -->

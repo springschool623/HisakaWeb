@@ -1,0 +1,355 @@
+﻿
+@{
+    ViewBag.Title = "AdminHome";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+
+    .crud-btn {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+    }
+
+        .crud-btn i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+    td, th {
+        text-align: center;
+    }
+</style>
+
+@{
+    int count = 0;
+    int count1 = 0;
+    int count2 = 0;
+    int count3 = 0;
+    int count4 = 0;
+}
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">Admin Home</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header border-transparent">
+            <h3 class="card-title">Danh sách loại sản phẩm</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table m-0">
+                    <thead>
+                        <tr>
+                            <th>Số thứ tự</th>
+                            <th>Loại sản phẩm</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Categories)
+                        {
+                            count1++;
+                            <tr>
+                                <td>@count1</td>
+                                <td>@item.categoryName</td>
+                                <td>
+                                    <a href="@Url.Action("Delete","Categories", new { id=item.categoryName })" class="crud-btn btn-danger">
+                                        <i class="fa-solid fa-x">
+                                        </i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+            <a href="@Url.Action("Create", "Categories")" class="btn btn-sm btn-success float-left">Thêm loại sản phẩm mới</a>
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <div class="card">
+        <div class="card-header border-transparent">
+            <h3 class="card-title">Danh sách nhãn hàng</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table m-0">
+                    <thead>
+                        <tr>
+                            <th>Số thứ tự</th>
+                            <th>Nhãn hàng</th>
+                            <th>Logo nhãn hàng</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Brands)
+                        {
+                            count4++;
+                            <tr>
+                                <td>@count4</td>
+                                <td>@item.brandName</td>
+                                <td><img src="@item.brandLogo" width="200" /></td>
+
+                                <td>
+                                    <a href="@Url.Action("Edit","Brands", new { id=item.brandName })" class="crud-btn btn-info">
+                                        <i class="fa-solid fa-pen-to-square">
+                                        </i>
+                                    </a>
+                                    <a href="@Url.Action("Delete","Brands", new { id=item.brandName })" class="crud-btn btn-danger">
+                                        <i class="fa-solid fa-x">
+                                        </i>
+                                    </a>
+                                    <a href="@Url.Action("Details","Brands", new { id=item.brandName })" class="crud-btn btn-danger">
+                                        <i class="fa-solid fa-x">
+                                        </i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+            <a href="@Url.Action("Create", "Brands")" class="btn btn-sm btn-success float-left">Thêm nhãn hàng mới</a>
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <div class="card">
+        <div class="card-header border-transparent">
+            <h3 class="card-title">Danh sách sản phẩm</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table m-0">
+                    <thead>
+                        <tr>
+                            <th>Số thứ tự</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá tiền</th>
+                            <th>Số lượng còn</th>
+                            <th>Loại sản phẩm</th>
+                            <th>Nhãn hiệu</th>
+                            <th>Hình ảnh</th>
+                            <th>Ngày thêm</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Products)
+                        {
+                            count2++;
+                            <tr>
+                                <td>@count2</td>
+                                <td>@item.productID</td>
+                                <td>@item.productName</td>
+                                @{
+                                    double price = (double)item.productPrice;
+                                }
+                                <td>@price.ToString("#,##0 VND")</td>
+                                <td>@item.productQuantity</td>
+                                <td>@item.productCategory</td>
+                                <td>@item.productBrand</td>
+                                <td><img src="@item.productImage" width="200" /></td>
+                                <td>@item.createdAt</td>
+
+                                <td>
+                                    <a href="@Url.Action("Edit","Products", new { id=item.productID })" class="crud-btn btn-info">
+                                        <i class="fa-solid fa-pen-to-square">
+                                        </i>
+                                    </a>
+                                    <a href="@Url.Action("Delete","Products", new { id=item.productID })" class="crud-btn btn-danger">
+                                        <i class="fa-solid fa-x">
+                                        </i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+            <a href="@Url.Action("Create", "Products")" class="btn btn-sm btn-success float-left">Thêm sản phẩm mới</a>
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <div class="card">
+        <div class="card-header border-transparent">
+            <h3 class="card-title">Danh sách tài khoản người dùng</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table m-0">
+                    <thead>
+                        <tr>
+                            <th>Số thứ tự</th>
+                            <th>Mã khách hàng</th>
+                            <th>Họ khách hàng</th>
+                            <th>Tên khách hàng</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Customers)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.customerID</td>
+                                <td>@item.customerFirstName</td>
+                                <td>@item.customerLastName</td>
+                                <td>@item.customerEmail</td>
+                                <td>@item.customerPhoneNo</td>
+
+                                <td>
+                                    <a href="@Url.Action("Edit","Customers", new { id=item.customerID })" class="crud-btn btn-info">
+                                        <i class="fa-solid fa-pen-to-square">
+                                        </i>
+                                    </a>
+                                    <a href="@Url.Action("Delete","Customers", new { id=item.customerID })" class="crud-btn btn-danger">
+                                        <i class="fa-solid fa-x">
+                                        </i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <div class="card">
+        <div class="card-header border-transparent">
+            <h3 class="card-title">Danh sách thông tin khách hàng</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table m-0">
+                    <thead>
+                        <tr>
+                            <th>Số thứ tự</th>
+                            <th>Tên tài khoản</th>
+                            <th>Mật khẩu</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Accounts)
+                        {
+                            count3++;
+                            <tr>
+                                <td>@count3</td>
+                                <td>@item.accountName</td>
+                                <td>@item.accountPassword</td>
+                                <td>@item.account_status</td>
+
+                                <td>
+                                    <a href="@Url.Action("Edit","Customers", new { id=item.accountID })" class="crud-btn btn-info">
+                                        <i class="fa-solid fa-pen-to-square">
+                                        </i>
+                                    </a>
+                                    <a href="@Url.Action("Delete","Customers", new { id=item.accountID })" class="crud-btn btn-danger">
+                                        <i class="fa-solid fa-x">
+                                        </i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+        </div>
+        <!-- /.card-footer -->
+    </div>
+</section>
